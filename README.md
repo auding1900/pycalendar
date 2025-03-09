@@ -32,7 +32,7 @@ pycalendar
 
 1. Clone the repository:
    ```
-   git clone <repository-url>
+   git clone https://github.com/auding1900/pycalendar.git
    cd pycalendar
    ```
 
