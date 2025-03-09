@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.calendar {
+    text-align: center;
+}
+
+.calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar th, .calendar td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.calendar th {
+    background-color: #f2f2f2;
+}
+
+.today {
+    font-weight: bold;
+}
+
+.weekend {
+    color: blue;
+}
+
+.holiday {
+    color: red;
+}
+
+.holidays {
+    margin-top: 20px;
+}

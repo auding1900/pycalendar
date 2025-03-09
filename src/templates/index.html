@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <form method="post">
+                <input type="hidden" name="current_year" value="{{ year }}">
+                <input type="hidden" name="current_month" value="{{ month }}">
+                <button name="prev">&lt;</button>
+                <button name="next">&gt;</button>
+                <button name="today">Today</button>
+                <input type="text" name="year" placeholder="Year">
+                <input type="text" name="month" placeholder="Month">
+                <button name="any">Go</button>
+            </form>
+        </div>
+        <div class="calendar">
+            <h2>{{ year }}-{{ month }}</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                        <th>Sun</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for week, lunar_week in calendar|zip(lunar_dates) %}
+                    <tr>
+                        {% for day, lunar_day in week|zip(lunar_week) %}
+                        <td>
+                            {% if day %}
+                                <span class="{% if day == today %}today{% endif %} {% if (loop.index0 == 5 or loop.index0 == 6) %}weekend{% endif %} {% for holiday in holidays %}{% if holiday[0].day == day %}holiday{% endif %}{% endfor %}">
+                                    {{ day }}<br>{{ lunar_day }}
+                                </span>
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="holidays">
+            <h3>Holidays</h3>
+            <ul>
+                {% for holiday in holidays %}
+                <li>{{ holiday[0] }}: {{ holiday[1] }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
