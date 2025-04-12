@@ -65,7 +65,7 @@ python src/main.py
 
 ## Author
 
-Your Name
+auding1900
 
 ## License
 
